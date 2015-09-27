@@ -21,9 +21,9 @@ var dbUrl;
 		protocol: 'mysql'
 	};
 
-	console.error(connStr);
-	console.error(matches);
-	console.error(JSON.stringify(dbUrl));
+	// console.error(connStr);
+	// console.error(matches);
+	// console.error(JSON.stringify(dbUrl));
 })();
 
 // Init ORM
