@@ -100,6 +100,8 @@ app.get('/oauth/connect', function (req, res) {
 			return;
 		}
 
+		console.error(response);
+
 		var redirectUrl = response.browser_redirect_url;
 
 		// Save connect token
