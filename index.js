@@ -8,7 +8,7 @@ var cc = new ContextIO.Client({
 // Parse connection string
 var dbUrl;
 (function () {
-	var connStr = process.env['MYSQLCONNSTR_DefaultConnection'];
+	var connStr = process.env['MYSQLCONNSTR_default'];
 	var matches = connStr.match(/^Database=(\w+);Data Source=([\w\-\.]+);User Id=(\w+);Password=(\w+)$/);
 	if (!matches) {
 		throw new Error('failed to parse database connection string');
