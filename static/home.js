@@ -18,8 +18,7 @@ $(function () {
 	var news = new NewsletterCollection();
 	var $lists = $('#lists');
 	news.bind('add', function (model) {
-		console.log(model);
-		$lists.append(new NewsletterView({ model: model }));
+		$lists.append(new NewsletterView({ model: model }).$el);
 	});
 	news.fetch();
 });
