@@ -20,6 +20,8 @@ var dbUrl;
 		password: matches[3],
 		protocol: 'mysql'
 	};
+
+	console.error(JSON.stringify(dbUrl));
 })();
 
 // Init ORM
