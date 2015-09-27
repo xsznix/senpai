@@ -9,6 +9,8 @@ html, body {
 	width: 100%;
 	padding: 24px;
 	box-sizing: border-box;
+
+	color: #fff;
 }
 
 .layer.-fullheight {
@@ -22,6 +24,7 @@ html, body {
 
 h1, h2 {
 	font-family: Helvetica Neue;
+	font-weight: 300;
 }
 
 nav {

@@ -116,6 +116,7 @@ app.get('/my_lists', function (req, res) {
 
 			if (!lists[sender.email]) {
 				lists[sender.email] = {
+					message_id: message.message_id,
 					sender: sender,
 					unsub_link: unsub,
 					emails: []
@@ -132,6 +133,7 @@ app.get('/my_lists', function (req, res) {
 		for (var k in lists) {
 			if (lists.hasOwnProperty(k)) {
 				listsArr.push({
+					message_id: lists[k].message_id,
 					sender_name: lists[k].sender.name,
 					sender_email: k,
 					unsub_link: lists[k].unsub_link,
