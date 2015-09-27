@@ -33,14 +33,14 @@ orm.connect(dbUrl, function (err, db) {
 	if (err) throw err;
 
 	// Account information
-	Account = db.define({
+	Account = db.define('account', {
 		c_id: String,
 		first_name: String,
 		last_name: String,
 		email: String
 	});
 
-	ConnectToken = db.define({
+	ConnectToken = db.define('connect_token', {
 		token: String
 	});
 
