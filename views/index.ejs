@@ -3,9 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Senpai</title>
+	<link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
-	<h1>Senpai</h1>
-	<a href="/oauth/connect">Connect</a>
+	<nav>
+		<div id="logo">senpai</div>
+		<div class="spacer">
+		</div>
+		<a href="#">About</a>
+		<a href="#">Contact</a>
+	</nav>
+	<div id="intro" class="layer -fullheight">
+		<div class="layer-inner">
+			<div id="senpai" class="vcenter">先輩</div>
+			<div class="vcenter">
+				<h1>You don't read most of your email.</h1>
+				<h2>Unsubscribe from it.</h2>
+			</div>
+			<form action="/login" method="post">
+				<input type="text" name="email" placeholder="you@example.com">
+				<input type="submit" value="Start">
+			</form>
+		</div>
+	</div>
 </body>
 </html>

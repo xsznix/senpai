@@ -9,6 +9,8 @@ var cc = new ContextIO.Client({
 var dbUrl;
 (function () {
 	var connStr = process.env['MYSQLCONNSTR_default'];
+	if (!connStr) return; // static test
+
 	var matches = connStr.match(/^Database=(\w+);Data Source=([\w\-\.]+);User Id=(\w+);Password=(\w+)$/);
 	if (!matches) {
 		throw new Error('failed to parse database connection string');
@@ -25,25 +27,26 @@ var dbUrl;
 // Init ORM
 var orm = require('orm');
 var Account, ConnectToken;
-orm.connect(dbUrl, function (err, db) {
-	if (err) throw err;
-
-	// Account information
-	Account = db.define('account', {
-		c_id: String,
-		first_name: String,
-		last_name: String,
-		email: String
-	});
-
-	ConnectToken = db.define('connect_token', {
-		token: String
-	});
-
-	db.sync(function (err) {
+if (dbUrl)
+	orm.connect(dbUrl, function (err, db) {
 		if (err) throw err;
+
+		// Account information
+		Account = db.define('account', {
+			c_id: String,
+			first_name: String,
+			last_name: String,
+			email: String
+		});
+
+		ConnectToken = db.define('connect_token', {
+			token: String
+		});
+
+		db.sync(function (err) {
+			if (err) throw err;
+		});
 	});
-});
 
 // Init express
 var express = require('express');
@@ -51,10 +54,10 @@ var cookieSession = require('cookie-session');
 var app = express();
 
 app.set('view engine', 'ejs');
-app.use('/static', express.static('public'));
+app.use('/static', express.static('static'));
 app.use(cookieSession({
 	name: 'session',
-	keys: [process.env['SESSION_KEY_1'], process.env['SESSION_KEY_2']]
+	keys: [process.env['SESSION_KEY_1'] || 'asdf', process.env['SESSION_KEY_2'] || 'hjkl']
 }));
 
 // Routes
@@ -129,7 +132,7 @@ app.post('/login', function (req, res) {
 		}
 
 		if (!accounts.length) {
-			res.status(404).send('Could not find account with that email');
+			res.redirect('/oauth/connect/?email=' + encodeURIComponent(req.query.email));
 			return;
 		}
 
@@ -147,7 +150,8 @@ app.get('/logout', function (req, res) {
 app.get('/oauth/connect', function (req, res) {
 	// Get a connect_token
 	cc.connectTokens().post({
-		callback_url: 'http://senpai.azurewebsites.net/oauth/callback'
+		callback_url: 'http://senpai.azurewebsites.net/oauth/callback',
+		email: req.query.email
 	}, function (err, response) {
 		if (err) {
 			res.status(500).send('Could not get token from ContextIO: ' + err.message);
