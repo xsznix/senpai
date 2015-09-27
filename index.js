@@ -60,7 +60,7 @@ app.use(cookieSession({
 	name: 'session',
 	keys: [process.env['SESSION_KEY_1'] || 'asdf', process.env['SESSION_KEY_2'] || 'hjkl']
 }));
-app.use(bodyParser.urlEncoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 
