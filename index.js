@@ -14,10 +14,10 @@ var dbUrl;
 		throw new Error('failed to parse database connection string');
 	}
 	dbUrl = {
-		host: matches[1],
-		database: matches[0],
-		user: matches[2],
-		password: matches[3],
+		host: matches[2],
+		database: matches[1],
+		user: matches[3],
+		password: matches[4],
 		protocol: 'mysql'
 	};
 
