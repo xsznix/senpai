@@ -30,7 +30,13 @@
 			<li><%= email.subject %> <span class="right"><%= moment(email.date * 1000).format('MMM D, YYYY') %></span></li>
 		<% }) %>
 	</ul>
-	<a href="<%= unsub_links[0] %>" class="unsub" target="_blank">Unsubscribe</a>
+	<a href="<%= unsub_link.split(',').map(function (link) {
+				link = link.match(/^\s*(.*)\s*$/)[1];
+				if (link[0] === '<')
+					return link.substring(1, link.length - 2);
+				else
+					return link;
+			}) %>" class="unsub" target="_blank">Unsubscribe</a>
 	</script>
 
 	<script src="/lib/jquery/dist/jquery.min.js"></script>
