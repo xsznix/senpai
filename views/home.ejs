@@ -26,8 +26,8 @@
 	<script type="text/template" id="list-item">
 	<input type="checkbox" id="n_<%= message_id %>" name="unsub_from">
 	<label for="n_<%= message_id %>">
-		<b><%- sender_name %></b>
-		<%- sender_email %>
+		<b><%- sender_name %></b>&ensp;
+		<i><%- sender_email %></i>
 	</label>
 	<ul class="emails">
 		<% _.each(emails, function (email) { %>
