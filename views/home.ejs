@@ -23,16 +23,13 @@
 	</div>
 
 	<script type="text/template" id="list-item">
-	<input type="checkbox" id="n_<%= message_id %>" name="unsub_from">
-	<label for="n_<%= message_id %>">
-		<b><%- sender_name %></b>&ensp;
-		<i><%- sender_email %></i>
-	</label>
+	<b><%- sender_name %></b>&ensp;
+	<i><%- sender_email %></i>
 	<ul class="emails">
 		<% _.each(emails, function (email) { %>
 			<li><%= email.subject %> <span class="right"><%= moment(email.date * 1000).format('MMM D, YYYY') %></span></li>
 		<% }) %>
-		<button class="unsub">Unsubscribe</button>
+		<a href="<%= unsub_links[0] %>" class="unsub" target="_blank">Unsubscribe</a>
 	</ul>
 	</script>
 

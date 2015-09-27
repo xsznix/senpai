@@ -10,12 +10,20 @@ $(function () {
 		tagName: 'li',
 		template: _.template($('#list-item').html()),
 
+		events: {
+			'click .unsub': 'markClicked'
+		},
+
 		initialize: function () {
 			this.render();
 		},
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
+		},
+
+		markClicked: function () {
+			this.$el.addClass('clicked');
 		}
 	});
 

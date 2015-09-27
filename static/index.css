@@ -221,14 +221,21 @@ input[type=submit]:hover {
 }
 
 #lists .unsub {
+	margin-top: 4px;
 	border: none;
 	padding: 8px 14px;
+	border-radius: 4px;
 
 	background: #f1c40f;
 
 	font-family: Helvetica Neue;
 	font-size: 16px;
 	font-weight: 300;
+	text-decoration: none;
 
-	float: right;
+	cursor: pointer;
+}
+
+#lists .unsub.clicked {
+	background: rgba(255,255,255,0.15);
 }
