@@ -11,6 +11,7 @@
     "url": "https://github.com/xsznix/senpai"
   },
   "dependencies": {
+    "backbone": "^1.2.3",
     "body-parser": "^1.14.0",
     "contextio": "^0.5.0",
     "cookie-session": "^1.2.0",
@@ -19,7 +20,8 @@
     "jquery": "^2.1.4",
     "jsdom": "^6.5.1",
     "mysql": "git+https://github.com/felixge/node-mysql.git",
-    "orm": "^2.1.27"
+    "orm": "^2.1.27",
+    "underscore": "^1.8.3"
   },
   "private": true
 }

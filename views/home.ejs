@@ -3,10 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Senpai</title>
+	<link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
-	<h1>Senpai</h1>
-	<p>Your mailing lists:</p>
+	<nav>
+		<div id="logo">senpai</div>
+		<div class="spacer">
+		</div>
+		<a href="#">About</a>
+		<a href="#">Contact</a>
+		<a href="/logout">Logout</a>
+	</nav>
+	<h1>Unsubscribe links</h1>
 	<ul id="lists"></ul>
+
+	<script type="text/template" id="list-item">
+	{{ sender_name }}: {{ sender_email }}. Unsub: {{ unsub_link }}
+	</script>
+
+	<script src="/lib/jquery/dist/jquery.min.js"></script>
+	<script src="/lib/underscore/underscore-min.js"></script>
+	<script src="/lib/backbone/backbone-min.js"></script>
+	<script src="/static/home.js"></script>
 </body>
 </html>

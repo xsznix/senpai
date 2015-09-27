@@ -56,6 +56,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.use('/static', express.static('static'));
+app.use('/lib', express.static('node_modules'));
 app.use(cookieSession({
 	name: 'session',
 	keys: [process.env['SESSION_KEY_1'] || 'asdf', process.env['SESSION_KEY_2'] || 'hjkl']
@@ -65,7 +66,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 
 app.get('/', function (req, res) {
-	res.render('index');
+	if (req.session.account_id)
+		res.redirect('/home');
+	else
+		res.render('index');
 });
 
 app.get('/home', function (req, res) {
@@ -93,7 +97,7 @@ app.get('/my_lists', function (req, res) {
 		}
 
 		var messages = response.body;
-		var lists = {};
+		var lists = {}, listsArr;
 
 		messages.forEach(function (message) {
 			if (!message.list_headers)
@@ -122,7 +126,19 @@ app.get('/my_lists', function (req, res) {
 			});
 		});
 
-		res.json(lists);
+		// Array-ify to make Backbone happy
+		for (var k in lists) {
+			if (lists.hasOwnProperty(k)) {
+				listsArr.push({
+					sender_name: lists[k].sender,
+					sender_email: k,
+					unsub_link: lists[k].unsub,
+					emails: lists[k].emails
+				});
+			}
+		}
+
+		res.json(listsArr);
 	});
 });
 
