@@ -109,8 +109,11 @@ app.get('/my_lists', function (req, res) {
 			if (!unsub)
 				return;
 
+			if (unsub.length)
+				unsub = unsub[0];
+
 			var unsubLinkList = unsub.split(',').map(function (link) {
-				return link.match(/\s*<(.*)>\s*/)[1];
+				return link.match(/\s*<?(.*)>?\s*/)[1];
 			});
 
 			// Get information from lists
