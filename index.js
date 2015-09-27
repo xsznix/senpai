@@ -132,7 +132,7 @@ app.post('/login', function (req, res) {
 		}
 
 		if (!accounts.length) {
-			res.redirect('/oauth/connect/?email=' + encodeURIComponent(req.query.email));
+			res.redirect('/oauth/connect?email=' + encodeURIComponent(req.query.email));
 			return;
 		}
 
