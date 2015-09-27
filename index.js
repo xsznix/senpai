@@ -145,6 +145,11 @@ app.get('/my_lists', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
+	if (!req.body.email) {
+		res.status(404).send('Missing email parameter');
+		return;
+	}
+
 	Account.find({ email: req.body.email }, function (err, accounts) {
 		if (err) {
 			res.status(500).send('Query for account failed: ' + err.message);
