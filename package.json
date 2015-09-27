@@ -15,10 +15,10 @@
     "cookie-session": "^1.2.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "felixge/node-mysql": "^2.9.0",
     "jquery": "^2.1.4",
     "jsdom": "^6.5.1",
-    "mysql": "^2.9.0",
-    "felixge/node-mysql": "^2.9.0",
+    "mysql": "git+https://github.com/felixge/node-mysql.git",
     "orm": "^2.1.27"
   },
   "private": true
