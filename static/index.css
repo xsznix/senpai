@@ -221,10 +221,10 @@ input[type=submit]:hover {
 }
 
 #lists .unsub {
+	display: inline-block;
 	margin-top: 4px;
 	border: none;
 	padding: 8px 14px;
-	border-radius: 4px;
 
 	background: #f1c40f;
 

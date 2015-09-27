@@ -29,8 +29,8 @@
 		<% _.each(emails, function (email) { %>
 			<li><%= email.subject %> <span class="right"><%= moment(email.date * 1000).format('MMM D, YYYY') %></span></li>
 		<% }) %>
-		<a href="<%= unsub_links[0] %>" class="unsub" target="_blank">Unsubscribe</a>
 	</ul>
+	<a href="<%= unsub_links[0] %>" class="unsub" target="_blank">Unsubscribe</a>
 	</script>
 
 	<script src="/lib/jquery/dist/jquery.min.js"></script>
