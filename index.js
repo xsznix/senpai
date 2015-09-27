@@ -109,6 +109,10 @@ app.get('/my_lists', function (req, res) {
 			if (!unsub)
 				return;
 
+			var unsubLinkList = unsub.split(',').map(function (link) {
+				return link.match(/\s*<(.*)>\s*/)[1];
+			});
+
 			// Get information from lists
 			var sender = message.addresses.from;
 			var subject = message.subject;
@@ -118,7 +122,7 @@ app.get('/my_lists', function (req, res) {
 				lists[sender.email] = {
 					message_id: message.message_id,
 					sender: sender,
-					unsub_link: unsub,
+					unsub_links: unsubLinkList,
 					emails: []
 				};
 			}
@@ -136,7 +140,7 @@ app.get('/my_lists', function (req, res) {
 					message_id: lists[k].message_id,
 					sender_name: lists[k].sender.name,
 					sender_email: k,
-					unsub_link: lists[k].unsub_link,
+					unsub_links: lists[k].unsub_links,
 					emails: lists[k].emails
 				});
 			}

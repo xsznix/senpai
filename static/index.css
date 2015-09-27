@@ -205,8 +205,10 @@ input[type=submit]:hover {
 }
 
 #lists > li {
-	margin-bottom: 8px;
+	margin-bottom: 32px;
 	font-size: 18px;
+
+	clear: both;
 }
 
 #lists .emails {
@@ -215,5 +217,18 @@ input[type=submit]:hover {
 }
 
 #lists .emails .right {
+	float: right;
+}
+
+#lists .unsub {
+	border: none;
+	padding: 8px 14px;
+
+	background: #f1c40f;
+
+	font-family: Helvetica Neue;
+	font-size: 16px;
+	font-weight: 300;
+
 	float: right;
 }

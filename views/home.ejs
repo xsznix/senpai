@@ -17,8 +17,7 @@
 
 	<div class="layer">
 		<div class="layer-inner">
-			<h1>Unsubscribe links</h1>
-			<p>Select the email subscriptions you won't pay attention to.</p>
+			<h1>Your Email Subscriptions</h1>
 			<ul id="lists"></ul>
 		</div>
 	</div>
@@ -33,6 +32,7 @@
 		<% _.each(emails, function (email) { %>
 			<li><%= email.subject %> <span class="right"><%= moment(email.date * 1000).format('MMM D, YYYY') %></span></li>
 		<% }) %>
+		<button class="unsub">Unsubscribe</button>
 	</ul>
 	</script>
 
