@@ -17,6 +17,7 @@
     "express": "^4.13.3",
     "jquery": "^2.1.4",
     "jsdom": "^6.5.1",
+    "node-mysql": "^0.4.2",
     "orm": "^2.1.27"
   },
   "private": true
