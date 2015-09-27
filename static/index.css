@@ -1,0 +1,189 @@
+html, body {
+	margin: 0;
+	padding: 0;
+
+	background: #2c3e50;
+}
+
+.layer {
+	width: 100%;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+.layer.-fullheight {
+	min-height: 100vh;
+}
+
+.layer-inner {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+h1, h2 {
+	font-family: Helvetica Neue;
+}
+
+nav {
+	z-index: 2;
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 48px;
+
+	padding: 0 24px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: justify;
+
+	/*background: rgba(0,0,0,0.15);*/
+	color: #fff;
+}
+
+nav .spacer {
+	flex: 1 1;
+}
+
+#logo {
+	color: rgba(255,255,255,0.6);
+	font-family: Matura MT Script Capitals;
+	font-size: 42px;
+}
+
+nav a {
+	display: inline-block;
+	padding: 16px 20px 0 18px;
+
+	color: rgba(255,255,255,0.6);
+
+	font-family: Helvetica Neue;
+	font-weight: 300;
+	text-decoration: none;
+
+	cursor: pointer;
+}
+
+nav a:hover {
+	background: rgba(255,255,255,0.05);
+}
+
+#intro {
+	padding-top: 70vh;
+	background: #2c3e50;
+	color: #fff;
+
+	text-align: center;
+}
+
+#intro h1 {
+	margin-top: 0;
+	margin-bottom: 16px;
+
+	font-size: 60px;
+	font-weight: 100;
+
+	animation-duration: 1.5s;
+	animation-name: fade-slide;
+}
+
+#intro h2 {
+	margin-top: 8px;
+
+	font-size: 34px;
+	font-weight: 100;
+
+	animation-duration: 3s;
+	animation-name: fade-slide-wait50;
+}
+
+#intro .vcenter {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+
+	text-align: center;
+}
+
+#senpai {
+	color: rgba(255,255,255,0.05);
+
+	font-family: Hannotate TC;
+	font-size: 40vw;
+	text-align: center;
+
+	-webkit-user-select: none;
+}
+
+form {
+	position: relative;
+	z-index: 1;
+}
+
+input[type=text] {
+	outline: 0;
+	padding: 6px;
+	background: rgba(0,0,0,0.2);
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border: none;
+
+	color: #fff;
+
+	font-family: Helvetica Neue;
+	font-size: 18px;
+	font-weight: 300;
+}
+
+input[type=submit] {
+	margin-left: -4px;
+	outline: 0;
+	padding: 6px 12px;
+	background: #2980b9;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border: none;
+
+	color: #fff;
+
+	font-family: Helvetica Neue;
+	font-size: 18px;
+	font-weight: 300;
+
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background: #3498db;
+}
+
+@keyframes fade-slide {
+	from {
+		margin-top: 48px;
+		opacity: 0;
+	}
+
+	to {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes fade-slide-wait50 {
+	0% {
+		margin-top: -24px;
+		opacity: 0;
+	}
+
+	50% {
+		margin-top: -24px;
+		opacity: 0;
+	}
+
+	100% {
+		margin-top: 8px;
+		opacity: 1;
+	}
+}
