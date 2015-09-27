@@ -97,7 +97,7 @@ app.get('/my_lists', function (req, res) {
 		}
 
 		var messages = response.body;
-		var lists = {}, listsArr;
+		var lists = {}, listsArr = [];
 
 		messages.forEach(function (message) {
 			if (!message.list_headers)
