@@ -70,7 +70,7 @@ app.get('/', function (req, res) {
 app.post('/login', function (req, res) {
 	Account.find({ email: req.query.email }, function (err, accounts) {
 		if (err) {
-			res.status(500).send('Query for account failed');
+			res.status(500).send('Query for account failed: ' + err.message);
 			return;
 		}
 
@@ -96,7 +96,7 @@ app.get('/oauth/connect', function (req, res) {
 		callback_url: 'http://senpai.azurewebsites.net/oauth/callback'
 	}, function (err, response) {
 		if (err) {
-			res.status(500).send('Could not get token from ContextIO');
+			res.status(500).send('Could not get token from ContextIO: ' + err.message);
 			return;
 		}
 
@@ -109,7 +109,7 @@ app.get('/oauth/connect', function (req, res) {
 			token: response.token
 		}, function (err) {
 			if (err) {
-				res.status(500).send('Could not save connect_token to database');
+				res.status(500).send('Could not save connect_token to database: ' + err.message);
 				return;
 			}
 
@@ -125,7 +125,7 @@ app.get('/oauth/callback', function (req, res) {
 	// Verify validity of token
 	ConnectToken.find({ token: token }, function (err, tokens) {
 		if (err) {
-			res.status(500).send('Query to find connect token failed');
+			res.status(500).send('Query to find connect token failed: ' + err.message);
 			return;
 		}
 
@@ -139,6 +139,11 @@ app.get('/oauth/callback', function (req, res) {
 
 		// Get account information from ContextIO
 		cc.connectTokens(token).get({}, function (err, token) {
+			if (err) {
+				res.status(500).send('Could not retrieve account data by account token: ' + err.message);
+				return;
+			}
+
 			token = token.body;
 			Account.create({
 				c_id: token.account.id,
@@ -147,7 +152,7 @@ app.get('/oauth/callback', function (req, res) {
 				email: token.account.email_addresses[0]
 			}, function (err) {
 				if (err) {
-					res.status(500).send('Could not create account');
+					res.status(500).send('Could not create account: ' + err.message);
 					return;
 				}
 
