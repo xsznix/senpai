@@ -50,6 +50,8 @@ if (dbUrl)
 
 // Init express
 var express = require('express');
+var ejs = require('ejs');
+ejs.delimiter = '$';
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var app = express();
