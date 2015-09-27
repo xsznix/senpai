@@ -1,0 +1,21 @@
+{
+  "name": "senpai",
+  "version": "1.0.0",
+  "description": "Become senpai by unsubscribing from all of those annoying newsletters that want you to notice them.",
+  "author": "Xuming Zeng <xsznix@gmail.com>",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xsznix/senpai"
+  },
+  "dependencies": {
+    "contextio": "^0.5.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
+    "jsdom": "^6.5.1"
+  },
+  "private": true
+}
