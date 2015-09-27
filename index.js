@@ -80,13 +80,13 @@ app.post('/login', function (req, res) {
 		}
 
 		// Hackathon-quality authentication
-		res.session.account_id = accounts[0].c_id;
+		req.session.account_id = accounts[0].c_id;
 		res.redirect('/home');
 	});
 });
 
 app.get('/logout', function (req, res) {
-	res.session.account_id = null;
+	req.session.account_id = null;
 	res.redirect('/');
 });
 
@@ -157,7 +157,7 @@ app.get('/oauth/callback', function (req, res) {
 				}
 
 				// Set session and continue
-				res.session.account_id = token.account.id;
+				req.session.account_id = token.account.id;
 				res.redirect('/home');
 			});
 		});
