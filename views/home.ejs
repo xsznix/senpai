@@ -29,9 +29,9 @@
 		<b><%- sender_name %></b>
 		<%- sender_email %>
 	</label>
-	<ul>
+	<ul class="emails">
 		<% _.each(emails, function (email) { %>
-			<li><%= email.subject %> <span class="right"><%= email.date %></span></li>
+			<li><%= email.subject %> <span class="right"><%= moment(email.date).format('MMM D, YYYY') %></span></li>
 		<% }) %>
 	</ul>
 	</script>
@@ -39,6 +39,7 @@
 	<script src="/lib/jquery/dist/jquery.min.js"></script>
 	<script src="/lib/underscore/underscore-min.js"></script>
 	<script src="/lib/backbone/backbone-min.js"></script>
+	<script src="/lib/moment/min/moment.min.js"></script>
 	<script src="/static/home.js"></script>
 </body>
 </html>

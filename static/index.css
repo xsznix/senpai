@@ -195,4 +195,15 @@ input[type=submit]:hover {
 	font-family: Helvetica Neue;
 	font-weight: 300;
 	line-height: 140%;
+	list-style-type: none;
+	margin-left: 0;
+}
+
+#lists > li {
+	margin-bottom: 8px;
+	font-size: 18px;
+}
+
+#lists .emails {
+	color: rgba(255,255,255,0.7);
 }
