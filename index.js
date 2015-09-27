@@ -13,7 +13,13 @@ var dbUrl;
 	if (!matches) {
 		throw new Error('failed to parse database connection string');
 	}
-	dbUrl = 'mysql://' + matches[2] + ':' + matches[3] + '@' + matches[1] + '/' + matches[0];
+	dbUrl = {
+		host: matches[1],
+		database: matches[0],
+		user: matches[2],
+		password: matches[3],
+		protocol: 'mysql'
+	};
 })();
 
 // Init ORM
