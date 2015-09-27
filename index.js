@@ -113,7 +113,7 @@ app.get('/my_lists', function (req, res) {
 				unsub = unsub[0];
 
 			var unsubLinkList = unsub.split(',').map(function (link) {
-				link = link.match(/\s*(.*)\s*/)[1];
+				link = link.match(/^\s*(.*)\s*$/)[1];
 				if (link[0] === '<')
 					return link.substring(1, link.length - 2);
 				else
@@ -128,7 +128,8 @@ app.get('/my_lists', function (req, res) {
 			if (!lists[sender.email]) {
 				lists[sender.email] = {
 					message_id: message.message_id,
-					sender: sender,
+					sender_name: sender.name,
+					sender_email: sender.email,
 					unsub_links: unsubLinkList,
 					emails: []
 				};
@@ -143,13 +144,7 @@ app.get('/my_lists', function (req, res) {
 		// Array-ify to make Backbone happy
 		for (var k in lists) {
 			if (lists.hasOwnProperty(k)) {
-				listsArr.push({
-					message_id: lists[k].message_id,
-					sender_name: lists[k].sender.name,
-					sender_email: k,
-					unsub_links: lists[k].unsub_links,
-					emails: lists[k].emails
-				});
+				listsArr.push(lists[k]);
 			}
 		}
 
