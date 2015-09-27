@@ -24,11 +24,16 @@
 	</div>
 
 	<script type="text/template" id="list-item">
-	<input type="checkbox" name="<%= message_id %>">
-	<label for="<%= message_id %>">
+	<input type="checkbox" id="n_<%= message_id %>" name="unsub_from">
+	<label for="n_<%= message_id %>">
 		<b><%- sender_name %></b>
 		<%- sender_email %>
 	</label>
+	<ul>
+		<% _.each(emails, function (email) { %>
+			<li><%= email.subject %> <span class="right"><%= email.date %></span></li>
+		<% } %>
+	</ul>
 	</script>
 
 	<script src="/lib/jquery/dist/jquery.min.js"></script>
