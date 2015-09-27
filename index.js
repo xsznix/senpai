@@ -100,7 +100,7 @@ app.get('/oauth/connect', function (req, res) {
 			return;
 		}
 
-		console.error(response);
+		response = response.body;
 
 		var redirectUrl = response.browser_redirect_url;
 
@@ -139,6 +139,7 @@ app.get('/oauth/callback', function (req, res) {
 
 		// Get account information from ContextIO
 		cc.connectTokens(token).get({}, function (err, token) {
+			token = token.body;
 			Account.create({
 				c_id: token.account.id,
 				first_name: token.account.first_name,
