@@ -206,4 +206,9 @@ input[type=submit]:hover {
 
 #lists .emails {
 	color: rgba(255,255,255,0.7);
+	font-size: 16px;
+}
+
+#lists .emails .right {
+	float: right;
 }

@@ -31,7 +31,7 @@
 	</label>
 	<ul class="emails">
 		<% _.each(emails, function (email) { %>
-			<li><%= email.subject %> <span class="right"><%= moment(email.date).format('MMM D, YYYY') %></span></li>
+			<li><%= email.subject %> <span class="right"><%= moment(email.date * 1000).format('MMM D, YYYY') %></span></li>
 		<% }) %>
 	</ul>
 	</script>
