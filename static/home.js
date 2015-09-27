@@ -23,7 +23,7 @@ $(function () {
 		},
 
 		markClicked: function () {
-			this.$el.addClass('clicked');
+			this.$('.unsub').addClass('clicked');
 		}
 	});
 
