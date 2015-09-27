@@ -51,6 +51,7 @@ if (dbUrl)
 // Init express
 var express = require('express');
 var cookieSession = require('cookie-session');
+var bodyParser = require('body-parser');
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -59,6 +60,7 @@ app.use(cookieSession({
 	name: 'session',
 	keys: [process.env['SESSION_KEY_1'] || 'asdf', process.env['SESSION_KEY_2'] || 'hjkl']
 }));
+app.use(bodyParser.urlEncoded({ extended: true }));
 
 // Routes
 
@@ -125,14 +127,14 @@ app.get('/my_lists', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-	Account.find({ email: req.query.email }, function (err, accounts) {
+	Account.find({ email: req.body.email }, function (err, accounts) {
 		if (err) {
 			res.status(500).send('Query for account failed: ' + err.message);
 			return;
 		}
 
 		if (!accounts.length) {
-			res.redirect('/oauth/connect?email=' + encodeURIComponent(req.query.email));
+			res.redirect('/oauth/connect?email=' + encodeURIComponent(req.body.email));
 			return;
 		}
 

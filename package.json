@@ -11,6 +11,7 @@
     "url": "https://github.com/xsznix/senpai"
   },
   "dependencies": {
+    "body-parser": "^1.14.0",
     "contextio": "^0.5.0",
     "cookie-session": "^1.2.0",
     "ejs": "^2.3.4",
