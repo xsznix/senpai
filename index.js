@@ -20,10 +20,6 @@ var dbUrl;
 		password: matches[4],
 		protocol: 'mysql'
 	};
-
-	// console.error(connStr);
-	// console.error(matches);
-	// console.error(JSON.stringify(dbUrl));
 })();
 
 // Init ORM
@@ -65,6 +61,64 @@ app.use(cookieSession({
 
 app.get('/', function (req, res) {
 	res.render('index');
+});
+
+app.get('/home', function (req, res) {
+	// User must be logged in
+	if (req.session.account_id == null) {
+		res.redirect('/');
+		return;
+	}
+
+	res.render('home');
+});
+
+app.get('/my_lists', function (req, res) {
+	// User must be logged in
+	if (req.session.account_id == null) {
+		res.json([]);
+		return;
+	}
+
+	// Get lists
+	cc.accounts(req.session.account_id).messages().get({ limit: 250 }, function (err, response) {
+		if (err) {
+			res.status(500).send('Could not get messages: ' + err.message);
+			return;
+		}
+
+		var messages = response.body;
+		var lists = {};
+
+		messages.forEach(function (message) {
+			if (!message.list_headers)
+				return;
+
+			var unsub = message.list_headers['list-unsubscribe'];
+			if (!unsub)
+				return;
+
+			// Get information from lists
+			var sender = message.addresses.from;
+			var subject = message.subject;
+			var date = message.date;
+
+			if (!lists[sender.email]) {
+				lists[sender.email] = {
+					sender: sender,
+					unsub_link: unsub,
+					emails: []
+				};
+			}
+
+			lists[sender.email].emails.push({
+				subject: subject,
+				date: date
+			});
+		});
+
+		res.json(lists);
+	});
 });
 
 app.post('/login', function (req, res) {
