@@ -120,7 +120,7 @@ app.get('/oauth/connect', function (req, res) {
 });
 
 app.get('/oauth/callback', function (req, res) {
-	var token = req.query('contextio_token');
+	var token = req.query['contextio_token'];
 
 	// Verify validity of token
 	ConnectToken.find({ token: token }, function (err, tokens) {
