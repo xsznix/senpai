@@ -122,7 +122,7 @@ app.get('/my_lists', function (req, res) {
 					message_id: message.message_id,
 					sender_name: sender.name,
 					sender_email: sender.email,
-					unsub_link: unsub
+					unsub_link: unsub,
 					emails: []
 				};
 			}
