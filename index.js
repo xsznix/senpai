@@ -132,9 +132,9 @@ app.get('/my_lists', function (req, res) {
 		for (var k in lists) {
 			if (lists.hasOwnProperty(k)) {
 				listsArr.push({
-					sender_name: lists[k].sender,
+					sender_name: lists[k].sender.name,
 					sender_email: k,
-					unsub_link: lists[k].unsub,
+					unsub_link: lists[k].unsub_link,
 					emails: lists[k].emails
 				});
 			}
